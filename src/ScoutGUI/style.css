@@ -1,0 +1,89 @@
+body{
+    margin:0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: #5b6467; 
+    background-image: linear-gradient(315deg, #5b6467 0%, #8b939a 74%);
+}
+
+.Hedder{
+    display:block;
+    position: relative;
+    top: 0%;
+    left: 0;
+    right: 0;
+    height: 50px;
+    width: 100%;
+    background-color: #485461;
+    background-image: linear-gradient(315deg, #485461 0%, #28313b 74%);
+}
+.HedderImgContainer{
+    display: block;
+    height: 30px;
+    width: 100px;
+}
+.HedderImg{
+    height: 100%;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.VideoStreeemContainer{
+    position: relative;
+    height: 480px;
+    width: 640px;
+    margin:auto;
+}
+
+.ConstructionImg{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;  
+}
+
+.StatusWindowContainer{
+    font-family: sans-serif;
+    overflow:auto;
+    position: relative;
+    border-style: groove;
+    border-color: darkgray;
+    height: 110px;
+    width: 200px;
+}
+
+.StatusWindowHedding{
+    font-weight: 600;
+    padding: 5px;
+    font-size: larger;
+    text-align: center;
+    color:whitesmoke;
+    background-color: #485461;
+    background-image: linear-gradient(315deg, #485461 0%, #28313b 74%);
+}
+
+.StatusWindowElement{
+    display: inline-block;
+    padding: 2px;
+}
+
+.JoyContainer{
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: 60px;
+    left: 70px;
+}
+.Leftbtn{
+    width: 100px;
+    height: 30px;
+    position: absolute;
+    top: 250px;
+    left: 0px;
+}
+.Rightbtn{
+    width: 100px;
+    height: 30px;
+    position: absolute;
+    top: 250px;
+    left: 250px;
+}

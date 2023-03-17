@@ -1,0 +1,36 @@
+footprint: [ [-0.2,-0.15], [0.2,-0.15], [0.2,0.15], [-0.2,0.15] ]
+#footprint: [ [-0.27,-0.2], [0.27,-0.2], [0.27,0.2], [-0.27,0.2] ]
+#footprint: [ [-0.1,-0.07], [0.1,-0.07], [0.1,0.07], [-0.1,0.07] ]
+#footprint: [ [-0.465,-0.350], [0.465,-0.350], [0.465,0.350], [-0.465,0.350] ]
+#footprint: [ [-0.01,-0.01], [0.01,-0.01], [0.01,0.01], [-0.01,0.01] ]
+
+
+footprint_clearing_enabled: true
+
+
+footprint_padding: 0.01
+
+robot_base_frame: base_link
+update_frequency: 4.0 #4
+publish_frequency: 3.0 #3
+transform_tolerance: 0.5
+
+resolution: 0.025
+
+obstacle_range: 6.0
+raytrace_range: 6.0
+
+
+#layer definitions
+static:
+    map_topic: /map
+    subscribe_to_updates: true
+
+obstacles_laser:
+    observation_sources: laser
+    laser: {data_type: LaserScan, clearing: true, marking: true, topic: scan_filtered, inf_is_valid: true}
+    
+
+
+    
+cost_scaling_factor: 2.58

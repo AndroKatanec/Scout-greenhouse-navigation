@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>abseil</name>
+  <version>1.0.0</version>
+  <description>abseil-cpp</description>
+
+  <maintainer email="none@none.com">google</maintainer>
+  <license>NA</license>
+
+  <buildtool_depend>cmake</buildtool_depend>
+  <export>
+    <build_type>cmake</build_type>
+  </export>
+</package>
