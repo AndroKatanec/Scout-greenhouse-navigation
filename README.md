@@ -25,7 +25,38 @@ Once you are connected to a Scout robot, open new tmux session and run commands 
 10. <code>roslaunch scout_ros_nav navigation_cartographer.launch</code> -> launches navigation stack
 11. <code>rviz</code> -> launches rviz, for visualization purposes
 
+Now that everything is up and running, drive the robot around the space in order to create map which can be seen in rviz window. Also, in rviz you can set goal position and robot will autonomously follow produced path and reach the given goal.
+
 ### Lifting mechanism
-In order to control lifting mechanism on the robot run following command: 
+In order to control lifting mechanism on the robot run following command that enables serial communication with arduino board controlling compressor: 
 <code>putty /dev/ttyUSB0 -serial -sercfg 9600,8,n,1,N</code> \
 New window will pop up, now press 1 to lift up construction and 0 to release.
+
+## Tuning robot's navigation stack
+In order to obtain reliable movement of the robot through the narrow corridors of the greenhouse, we had to adjust the parameters of the navigation stack. Robot's movement needs to be safe and reliable, and produced path needs to go through a middle of narrow corridors.
+
+Parameters that we have tuned are located in `src\scout_navigation\scout_ros_nav\param` folder, specifically we have tuned parameters in `planner.yaml`, `costmap_local.yaml`, `costmap_global_static.yaml` and `costmap_common.yaml` yaml files.
+
+In tuning process we have used [ROS Navigation Tuning Guide](https://kaiyuzheng.me/documents/navguide.pdf) as the main reference for setting parameters, help of other colleagues that already had experience with a scout robot and good old trial and error method. \
+Some of the parameters that gave biggest improvement in terms of robot's navigation and movement through narrow corridors are listed below:
+
+- in `planner.yaml` under **DWAPlannerROS**: 
+  - `holonomic_robot: true` (because robot has omni-directional wheels)
+  - `sim_time: 1.5` 
+  - `path_distance_bias: 25`
+  - `goal_distance_bias: 20`
+  - `occdist_scale: 100`
+ 
+- in `costmap_local.yaml`:
+  - `inflation_radius: 0.13`
+
+- in `costmap_global_static.yaml`:
+  - `inflation_radius: 0.5`
+
+- in `costmap_common.yaml`:
+  - `footprint: [ [-0.2,-0.15], [0.2,-0.15], [0.2,0.15], [-0.2,0.15] ]`
+  - `resolution: 0.025`
+  - `obstacle_range: 6.0`
+  - `raytrace_range: 6.0`
+
+These are only few selected ones, rest of the parameters can be found in aforementioned folder.
