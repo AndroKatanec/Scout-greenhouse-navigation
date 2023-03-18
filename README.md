@@ -8,7 +8,7 @@ In our case Scout mobile robot was equipped with a Sick Nav350 2D lidar sensor f
 
 ## Instructions for starting the robot navigation and powering on lifting mechanism
 Firstly, make sure you are connected to a robot via remote monitor/PC, we recommend using NoMachine application for remote access to the Intel NUC PC.
-Once you are connected to a Scout robot, open new tmux session and run commands in following order (each in separate tmux windows):
+Once you are connected to a Scout robot, open new tmux session and run commands in following order (each in separate tmux pane):
 
 
 ### Starting robot drives and navigation stack
