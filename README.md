@@ -11,18 +11,21 @@ Firstly, make sure you are connected to a robot via remote monitor/PC, we recomm
 Once you are connected to a Scout robot, open new tmux session and run commands in following order (each in separate tmux windows):
 
 
-### Starting all robot drives and navigation stack
-1. source ~/YOUR_WORKSPACE_NAME/devel/setup.zsh (sources catkin workspace)
-2. roscore
-3. rosrun scout_bringup bringup_can2usb.bash
-4. roslaunch scout_description description.launch model_xacro:=/home/larics/scout_ws/src/scout_ros/scout_description/urdf/scout_mini.xacro
-5. roslaunch sicktoolbox_wrapper sicknav350.launch
-6. rosrun sicktoolbox_wrapper filter_scan.py
-7. rosrun cartographer_ros cartographer_node
-8. rosrun cartographer_ros cartographer_occupancy_grid_node
-9. roslaunch scout_ros_nav navigation_cartographer.launch
-10. rviz
+### Starting robot drives and navigation stack
 
-### Starting lifting mechanism
-1. putty /dev/ttyUSB0 -serial -sercfg 9600,8,n,1,N
-2. press 1 to lift up, and 0 to release
+1. <code>source ~/YOUR_WORKSPACE_NAME/devel/setup.zsh</code>  -> this sources catkin workspace
+2. <code>roscore</code> -> starts ROS master node
+3. <code>rosrun scout_bringup bringup_can2usb.bash</code> -> launch and configuration files to start ROS nodes for controlling robot
+4. <code>roslaunch scout_base scout_mini_omni_base.launch</code> -> ROS wrapper around ugv_sdk to monitor and control the scout robot
+5. <code>roslaunch scout_description description.launch model_xacro:=/PATH_TO_YOUR_WORKSPACE/scout_description/urdf/scout_mini.xacro </code> -> URDF model for the mobile base
+6. <code>roslaunch sicktoolbox_wrapper sicknav350.launch</code> -> driver za Sick lidar
+7. <code>rosrun sicktoolbox_wrapper filter_scan.py</code> -> node that filters scans from the back of the robot in order to ignore lifting construction located on the robot
+8. <code>rosrun cartographer_ros cartographer_node -configuration_directory ~ -configuration_basename scout-cartographer.lua scan:=scan_filtered</code> -> takes laser scans, creates submaps and forwards them to the cartographer_occupancy_grid_node
+9. <code>rosrun cartographer_ros cartographer_occupancy_grid_node</code> -> takes cartographer submaps and returns occupancy grid which then navigation stack uses
+10. <code>roslaunch scout_ros_nav navigation_cartographer.launch</code> -> launches navigation stack
+11. <code>rviz</code> -> launches rviz, for visualization purposes
+
+### Lifting mechanism
+In order to control lifting mechanism on the robot run following command: 
+<code>putty /dev/ttyUSB0 -serial -sercfg 9600,8,n,1,N</code> \
+New window will pop up, now press 1 to lift up construction and 0 to release.
