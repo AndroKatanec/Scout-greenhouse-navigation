@@ -1,4 +1,4 @@
-# Scout-smart-garden
+# Scout-greenhouse-navigation
 This repository contains ROS (Robot operating system) source files for controlling and navigating AgileX-SCOUT MINI mobile robot optimised for moving through narrow corridors of a greenhouse, for automatic gardening purposes.
 ## Scout MINI setup
 In our case Scout mobile robot was equipped with a Sick Nav350 2D lidar sensor for localization and mapping, custom made lifter for lifting plants in a greenhouse and an Intel NUC PC unit running Ubuntu 20.04.
