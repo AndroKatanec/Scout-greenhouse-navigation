@@ -60,3 +60,5 @@ Some of the parameters that gave biggest improvement in terms of robot's navigat
   - `raytrace_range: 6.0`
 
 These are only few selected ones, rest of the parameters can be found in aforementioned folder.
+
+Also, the <code>filter_scan.py</code> node was created, located in `src\sicktoolbox_wrapper\ros\sicknav350` folder, that subscribes to the `/scan topic`, removes scans approx. 30° on the each side from the back of the robot and publishes new "filtered" scans on the `/scan_filtered` topic. This needs to be done because of a lifting construction legs that are located on the back of the robot and get in the way of laser scans.
