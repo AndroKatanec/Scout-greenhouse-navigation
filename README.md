@@ -20,7 +20,7 @@ Once you are connected to a Scout robot, open new tmux session and run commands 
 5. <code>roslaunch scout_description description.launch model_xacro:=/PATH_TO_YOUR_WORKSPACE/scout_description/urdf/scout_mini.xacro </code> -> URDF model for the mobile base
 6. <code>roslaunch sicktoolbox_wrapper sicknav350.launch</code> -> driver za Sick lidar
 7. <code>rosrun sicktoolbox_wrapper filter_scan.py</code> -> node that filters scans from the back of the robot in order to ignore lifting construction located on the robot
-8. <code>rosrun cartographer_ros cartographer_node -configuration_directory ~ -configuration_basename scout-cartographer.lua scan:=scan_filtered</code> -> takes laser scans, creates submaps and forwards them to the cartographer_occupancy_grid_node
+8. <code>rosrun cartographer_ros cartographer_node -configuration_directory ~/catkin_ws/src/cartographer_ros/cartographer_ros/configuration_files/ -configuration_basename scout-cartographer.lua scan:=scan_filtered</code> -> takes laser scans, creates submaps and forwards them to the cartographer_occupancy_grid_node
 9. <code>rosrun cartographer_ros cartographer_occupancy_grid_node</code> -> takes cartographer submaps and returns occupancy grid which then navigation stack uses
 10. <code>roslaunch scout_ros_nav navigation_cartographer.launch</code> -> launches navigation stack
 11. <code>rviz</code> -> launches rviz, for visualization purposes
